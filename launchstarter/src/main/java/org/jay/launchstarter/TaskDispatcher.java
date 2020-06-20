@@ -1,9 +1,12 @@
 package org.jay.launchstarter;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Looper;
 import android.util.Log;
+
 import androidx.annotation.UiThread;
+
 import org.jay.launchstarter.sort.TaskSortUtil;
 import org.jay.launchstarter.stat.TaskStat;
 import org.jay.launchstarter.utils.DispatcherLog;
@@ -24,6 +27,7 @@ public class TaskDispatcher {
     private long mStartTime;
     private static final int WAITTIME = 10000;
     private static Context sContext;
+    private static Application mApp;
     private static boolean sIsMainProcess;
     private List<Future> mFutures = new ArrayList<>();
     private static volatile boolean sHasInit;
@@ -57,9 +61,10 @@ public class TaskDispatcher {
     private TaskDispatcher() {
     }
 
-    public static void init(Context context) {
+    public static void init(Application context) {
         if (context != null) {
             sContext = context;
+            mApp = context;
             sHasInit = true;
             sIsMainProcess = Utils.isMainProcess(sContext);
         }
@@ -139,7 +144,7 @@ public class TaskDispatcher {
         mStartTime = System.currentTimeMillis();
         for (Task task : mMainThreadTasks) {
             long time = System.currentTimeMillis();
-            new DispatchRunnable(task,this).run();
+            new DispatchRunnable(task, this).run();
             DispatcherLog.i("real main " + task.getClass().getSimpleName() + " cost   " +
                     (System.currentTimeMillis() - time));
         }
@@ -217,7 +222,7 @@ public class TaskDispatcher {
             }
         } else {
             // 直接发，是否执行取决于具体线程池
-            Future future = task.runOn().submit(new DispatchRunnable(task,this));
+            Future future = task.runOn().submit(new DispatchRunnable(task, this));
             mFutures.add(future);
         }
     }
@@ -226,7 +231,7 @@ public class TaskDispatcher {
         if (ifNeedWait(task)) {
             mNeedWaitCount.getAndIncrement();
         }
-        task.runOn().execute(new DispatchRunnable(task,this));
+        task.runOn().execute(new DispatchRunnable(task, this));
     }
 
     @UiThread
@@ -251,6 +256,10 @@ public class TaskDispatcher {
 
     public static Context getContext() {
         return sContext;
+    }
+
+    public static Application getmApp() {
+        return mApp;
     }
 
     public static boolean isMainProcess() {

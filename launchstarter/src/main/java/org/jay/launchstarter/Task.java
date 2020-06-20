@@ -1,5 +1,6 @@
 package org.jay.launchstarter;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Process;
 import org.jay.launchstarter.utils.DispatcherExecutor;
@@ -13,6 +14,7 @@ public abstract class Task implements ITask {
     protected String mTag = getClass().getSimpleName().toString();
 
     protected Context mContext = TaskDispatcher.getContext();
+    protected Application mApp = TaskDispatcher.getmApp();
 
     /**
      * 当前进程是否是主进程
