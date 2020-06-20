@@ -4,7 +4,19 @@ import com.umeng.commonsdk.UMConfigure;
 
 import org.jay.launchstarter.Task;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 需要在getDeviceId之后执行
+ */
 public class InitUmengTask extends Task {
+    @Override
+    public List<Class<? extends Task>> dependsOn() {
+        List<Class<? extends Task>> task = new ArrayList<>();
+        task.add(GetDeviceIdTask.class);
+        return task;
+    }
 
     @Override
     public void run() {
