@@ -239,9 +239,9 @@ public class TaskDispatcher {
         try {
             if (DispatcherLog.isDebug()) {
                 DispatcherLog.i("still has " + mNeedWaitCount.get());
-                for (Task task : mNeedWaitTasks) {
-                    DispatcherLog.i("needWait: " + task.getClass().getSimpleName());
-                }
+//                for (Task task : mNeedWaitTasks) {
+//                    DispatcherLog.i("needWait: " + task.getClass().getSimpleName());
+//                }
             }
 
             if (mNeedWaitCount.get() > 0) {
