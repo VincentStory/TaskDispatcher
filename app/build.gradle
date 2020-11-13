@@ -33,7 +33,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation project(':launchstarter')
+//    implementation project(':launchstarter')
 
 //    ------------------
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -42,6 +42,8 @@ dependencies {
 //
     implementation  'com.umeng.umsdk:analytics:7.5.4'
     implementation  'com.umeng.umsdk:common:1.5.4'
+
+    implementation 'com.github.VincentStory:AppStart:1.2'
 
 //    implementation 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
 //    implementation 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
