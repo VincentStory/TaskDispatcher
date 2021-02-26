@@ -24,4 +24,4 @@ dependencies {
 
 ``` 
 
-![效果图](https://github.com/VincentStory/CompressImage/blob/master/example.png)
+![效果图](https://github.com/VincentStory/AppStart/blob/master/app/app_start.png)
