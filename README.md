@@ -23,5 +23,6 @@ dependencies {
 	    }
 
 ``` 
+具体使用方式如下
 
 ![效果图](https://github.com/VincentStory/AppStart/blob/master/app/app_start.png)
