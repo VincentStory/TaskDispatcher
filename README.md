@@ -23,3 +23,5 @@ dependencies {
 	    }
 
 ``` 
+
+![效果图](https://github.com/VincentStory/CompressImage/blob/master/example.png)
