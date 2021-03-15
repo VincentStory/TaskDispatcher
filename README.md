@@ -27,7 +27,7 @@ dependencies {
 
 ![效果图](https://github.com/VincentStory/AppStart/blob/master/app/app_start.png)
 
-如果需要任务在Application初始化完成之前完成初始化，需要在子task内重写neetWait()方法，
+如果需要任务在Application初始化完成之前完成初始化，需要在子task内重写neetWait()方法，然后返回true。
 示例代码：
 
 ``` 
@@ -37,7 +37,7 @@ public class GetDeviceIdTask extends Task {
 
     @Override
     public boolean needWait() {
-        return super.needWait();
+        return true;
     }
 
     @SuppressLint("MissingPermission")
