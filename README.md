@@ -24,6 +24,7 @@ dependencies {
 
 ``` 
 具体使用方式如下
+其中DelayInitDispatcher 为空闲加载任务
 
 ![效果图](https://github.com/VincentStory/AppStart/blob/master/app/app_start.png)
 
