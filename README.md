@@ -26,3 +26,27 @@ dependencies {
 具体使用方式如下
 
 ![效果图](https://github.com/VincentStory/AppStart/blob/master/app/app_start.png)
+
+如果需要任务在Application初始化完成之前完成初始化，需要在子task内重写neetWait()方法，
+示例代码：
+
+``` 
+
+public class GetDeviceIdTask extends Task {
+    private String mDeviceId;
+
+    @Override
+    public boolean needWait() {
+        return super.needWait();
+    }
+
+    @SuppressLint("MissingPermission")
+    @Override
+    public void run() {
+//        MyApp app = (MyApp) mContext;
+//        app.setDeviceId(mDeviceId);
+    }
+}
+
+``` 
+
