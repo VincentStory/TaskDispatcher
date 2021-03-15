@@ -23,5 +23,6 @@ public class GetDeviceIdTask extends Task {
         mDeviceId = tManager.getDeviceId();
 //        MyApp app = (MyApp) mContext;
 //        app.setDeviceId(mDeviceId);
+
     }
 }
