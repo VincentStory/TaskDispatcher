@@ -13,6 +13,9 @@ public class DelayInitDispatcher {
 
     private Queue<Task> mDelayTasks = new LinkedList<>();
 
+    /**
+     * 使用IdleHandler 可以实现在app在空闲时执行任务
+     */
     private MessageQueue.IdleHandler mIdleHandler = new MessageQueue.IdleHandler() {
         @Override
         public boolean queueIdle() {

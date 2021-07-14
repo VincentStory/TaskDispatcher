@@ -248,6 +248,7 @@ public class TaskDispatcher {
                 if (mCountDownLatch == null) {
                     throw new RuntimeException("You have to call start() before call await()");
                 }
+                //使用CountDownLatch实现线程阻塞，保证必须执行的任务先执行完再进入主页
                 mCountDownLatch.await(WAITTIME, TimeUnit.MILLISECONDS);
             }
         } catch (InterruptedException e) {

@@ -6,7 +6,10 @@ import android.os.Debug;
 import com.vincent.appstart.tasks.GetDeviceIdTask;
 import com.vincent.appstart.tasks.InitStethoTask;
 import com.vincent.appstart.tasks.InitUmengTask;
+import com.vincent.appstart.tasks.delayinittask.DelayInitTaskA;
+import com.vincent.appstart.tasks.delayinittask.DelayInitTaskB;
 
+import org.jay.launchstarter.DelayInitDispatcher;
 import org.jay.launchstarter.TaskDispatcher;
 
 /**
@@ -42,6 +45,14 @@ public class MyApp extends Application {
                 .start();
 
         dispatcher.await();
+
+
+        DelayInitDispatcher delayInitDispatcher = new DelayInitDispatcher();
+        delayInitDispatcher.addTask(new DelayInitTaskA())
+                .addTask(new DelayInitTaskB())
+                .start();
+
+
 
         LaunchTimer.endRecord();
 
