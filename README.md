@@ -7,6 +7,37 @@ android性能优化之启动优化，将启动任务统一管理，使代码更�
 启动优化项目示例代码
 启动器TaskDispatcher
 
+### 核心代码
+```
+if (mNeedWaitCount.get() > 0) {
+    if (mCountDownLatch == null) {
+        throw new RuntimeException("You have to call start() before call await()");
+    }
+    //使用CountDownLatch实现线程阻塞，保证必须执行的任务先执行完再进入主页
+    mCountDownLatch.await(WAITTIME, TimeUnit.MILLISECONDS);
+}
+
+
+// 当前Task依赖的Task数量（需要等待被依赖的Task执行完毕才能执行自己），默认没有依赖
+private CountDownLatch mDepends = new CountDownLatch(dependsOn() == null ? 0 : dependsOn().size());
+
+
+/**
+ * 使用IdleHandler 可以实现在app在空闲时执行任务
+ */
+private MessageQueue.IdleHandler mIdleHandler = new MessageQueue.IdleHandler() {
+    @Override
+    public boolean queueIdle() {
+        if(mDelayTasks.size()>0){
+            Task task = mDelayTasks.poll();
+            new DispatchRunnable(task).run();
+        }
+        return !mDelayTasks.isEmpty();
+    }
+};
+
+```
+
 	
 # 使用方法
 ## 添加依赖
