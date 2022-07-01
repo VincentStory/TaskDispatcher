@@ -6,10 +6,13 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+//        maven {
+//            url 'https://maven.aliyun.com/nexus/content/repositories/releases/'
+//        }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.3'
+        classpath 'com.android.tools.build:gradle:7.0.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
 
@@ -22,10 +25,11 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://dl.bintray.com/umsdk/release' }
-        maven {
-            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
-        }
+//        maven { url 'https://dl.bintray.com/umsdk/release' }
+//        maven {
+//            url 'https://maven.aliyun.com/nexus/content/repositories/releases/'
+//        }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
         maven { url 'https://jitpack.io' }
     }
 }
