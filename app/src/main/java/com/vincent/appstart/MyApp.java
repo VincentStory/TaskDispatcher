@@ -37,7 +37,6 @@ public class MyApp extends Application {
         TaskDispatcher.init(MyApp.this);
 
         TaskDispatcher dispatcher = TaskDispatcher.createInstance();
-
         dispatcher
                 .addTask(new InitStethoTask())
                 .addTask(new InitUmengTask())
