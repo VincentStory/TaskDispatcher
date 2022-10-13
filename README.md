@@ -86,6 +86,17 @@ public class GetDeviceIdTask extends Task {
 }
 
 ``` 
+真实记录统计时间，使用Feed流的第一项展示作为结束时间点，代码如下：
+```
+ holder.itemView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        holder.itemView.getViewTreeObserver().removeOnPreDrawListener(this);
+                        LaunchTimer.endRecord("FeedShow");
+                        return true;
+                    }
+                });
+```
 
 ```
 Copyright 2018 VincentStory
